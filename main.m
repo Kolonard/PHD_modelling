@@ -72,22 +72,22 @@ while (IterationNumber <= ITERATIONS_COUNT)
     cnt = 0; for ii = 1: 10000 cnt = cnt * ii; end; clear cnt ii; % fuck matlab
     bdclose all
 %reset memspace for results
-    falseAlarmCounter = 0;
-    missDetection = 0;
-    passAlarm = 0;
+    res_falseAlarmCounter = 0;
+    res_missDetection     = 0;
+    res_passAlarm         = 0;
     
 %searh Integrity Control signals
     for ii = 2:((timeDuration - 10) / timeStep )
         if ((intCtrl_status(ii) == 0) && (intCtrl_status(ii-1) == 1))
             if ( ii * timeStep < corruptTimeStart ) % time of event
                 % False alarm (alarm before event)
-                falseAlarmCounter = falseAlarmCounter + 1;
-            elseif ( ii * timeStep >= corruptTimeStart + 10 ) && (passAlarm ~= 0) %DO-229 hard criteria (10 seconds for alarm)
+                res_falseAlarmCounter = res_falseAlarmCounter + 1;
+            elseif ( ii * timeStep > corruptTimeStart + 10 ) && (res_passAlarm == 0) %DO-229 hard criteria (10 seconds for alarm)
                 %miss detection (no alarm in specified time)
-                missDetection = missDetection + 1; 
+                res_missDetection = res_missDetection + 1; 
             else 
                 %alarm set in specifid time
-                passAlarm = passAlarm + 1; 
+                res_passAlarm = res_passAlarm + 1; 
             end
         end
     end
