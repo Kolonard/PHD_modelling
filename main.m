@@ -48,7 +48,7 @@ while (IterationNumber <= ITERATIONS_COUNT)
     K_slowSensivity      = get_rndValue(0.98,0.01,1);
      
 %set corruption    
-    corruptErrorType = 0;%randi(3,1);
+    corruptErrorType = randi(3,1);
     if     corruptErrorType == 1
         %step
         corruptPSDError = randi(500) / 100;
@@ -112,7 +112,8 @@ while (IterationNumber <= ITERATIONS_COUNT)
                'K_fastCircle_psd', 'K_fastCircle_psd_dot','K_slowSensivity','K_slowWindow',...
                'timeDuration', 'timeInitial',...
                'IterationNumber',...
-               'falseAlarmCounter', 'missDetection', 'passAlarm', 'intCtrl_status'};    
+               'res_falseAlarmCounter', 'res_missDetection', 'res_passAlarm',...
+               'intCtrl_status'};    
            
 
 	fname = strcat('Z:\results\',string(datetime('now','Format',"yyyy-MM-dd-HH-mm-ss")),'.mat') ;
