@@ -1,6 +1,8 @@
 
 % top level modelling parameters 
 clear all
+bdclose all
+close all
 clc
 
 global timeStep timeDuration
@@ -10,11 +12,11 @@ global timeStep timeDuration
     velocityMax = 40;   %[m/sec] 
     altMax      = 1200; %[m]
 % modelling sub parameters 
-    ITERATIONS_COUNT = 0;
+    ITERATIONS_COUNT = 10;
 
 % variables
-    iterations       = 0;
-    timeToDisplay    = 1;
+    IterationNumber       = 0;
+%     timeToDisplay    = 1;
     corruptPSDError  = 0; % amplitude of pseudorange error
     corruptSatCount  = 0;
     corruptTimeStart = 0;
@@ -27,10 +29,10 @@ global timeStep timeDuration
     
 %get trajectory parameters
 
-while (iterations <= ITERATIONS_COUNT)
+while (IterationNumber <= ITERATIONS_COUNT)
 %    add variavitivity 
     tic
-    fprintf('iteration %i begin\n',iterations)
+    fprintf('iteration %i begin\n',IterationNumber)
     if randi(2,1)  ==  2 % 50% cases with rotation
         dhdg =  deg2rad (randn(1) ./ 2.5); % random angle speed from -1.5 to 1.5 deg per sec
         dpth = 0; drll = 0;
@@ -40,11 +42,11 @@ while (iterations <= ITERATIONS_COUNT)
     
 %set search parameters
 
-    K_fastCircle_psd     = get_rndValue(3,0.1,5);
-    K_fastCircle_psd_dot = get_rndValue(3,0.1,5);
+    K_fastCircle_psd     = get_rndValue(3,0.1,7);
+    K_fastCircle_psd_dot = K_fastCircle_psd;%get_rndValue(3,0.1,5);
     K_slowWindow         = get_rndValue(5,1,120);
-    K_slowSensivity      = 0.4;
-    
+    K_slowSensivity      = get_rndValue(0.98,0.01,1);
+     
 %set corruption    
     corruptErrorType = 0;%randi(3,1);
     if     corruptErrorType == 1
@@ -63,25 +65,63 @@ while (iterations <= ITERATIONS_COUNT)
 %new track file
     tracker;
     delete('Z:\track_normal.mat');
+    cnt = 0; for ii = 1: 10000 cnt = cnt * ii; end; clear cnt ii;% fuck matlab   
     save('Z:\track_normal.mat');
+    cnt = 0; for ii = 1: 10000 cnt = cnt * ii; end; clear cnt ii;% fuck matlab
+    simout = sim('base_model_lqeH',timeDuration - 10);   
+    cnt = 0; for ii = 1: 10000 cnt = cnt * ii; end; clear cnt ii; % fuck matlab
+    bdclose all
+%reset memspace for results
+    falseAlarmCounter = 0;
+    missDetection = 0;
+    passAlarm = 0;
     
-    sim('base_model_lqeH',timeDuration - 10);   
-
+%searh Integrity Control signals
+    for ii = 2:((timeDuration - 10) / timeStep )
+        if ((intCtrl_status(ii) == 0) && (intCtrl_status(ii-1) == 1))
+            if ( ii * timeStep < corruptTimeStart ) % time of event
+                % False alarm (alarm before event)
+                falseAlarmCounter = falseAlarmCounter + 1;
+            elseif ( ii * timeStep >= corruptTimeStart + 10 ) && (passAlarm ~= 0) %DO-229 hard criteria (10 seconds for alarm)
+                %miss detection (no alarm in specified time)
+                missDetection = missDetection + 1; 
+            else 
+                %alarm set in specifid time
+                passAlarm = passAlarm + 1; 
+            end
+        end
+    end
     
+%prepear for iteration save
+    start_position    = [lat(1,1), lon(1,1), alt(1,1)];
+    start_velicity    = [Ve(1,1) , Vn(1,1) , Vh(1,1)];
+    start_orientation = [hdg(1,1), pth(1,1), rll(1,1)];
+    end_position      = [lat(1,1) + lat_err(end,1),...
+                         lon(1,1) + lon_err(end,1),...
+                         alt(1,1) + alt_err(end,1)];   
+    end_velocity      = [Ve(1,1) + Ve_err(end,1),...
+                         Vn(1,1) + Vn_err(end,1),...
+                         Vh(1,1) + Vh_err(end,1)];
+    end_orientation   = [hdg(1,1) + heading_err(end,1),...
+                         pth(1,1) + pitch_err(end,1),...
+                         rll(1,1) + roll_err(end,1)]; 
     
-    varlist = {'lat(1)',  'lat(end)','lon(1)', 'lon(end)','alt(1)', 'alt(end)',...
-               'velocity','Ve(end)', 'Vn(1)',  'Vn(end)', 'Vh(1)',  'Vh(end)',...
+    varlist = {'start_position', 'start_position', 'start_orientation',...
+               'end_position'  , 'end_velocity'  , 'end_orientation'  ,...
                'corruptPSDError', 'corruptSatCount', 'corruptTimeStart', 'corruptErrorType',...
-               };    
+               'K_fastCircle_psd', 'K_fastCircle_psd_dot','K_slowSensivity','K_slowWindow',...
+               'timeDuration', 'timeInitial',...
+               'IterationNumber',...
+               'falseAlarmCounter', 'missDetection', 'passAlarm', 'intCtrl_status'};    
            
 
-	fname = strcat('projjectile',string(datetime('now','Format',"yyyy-MM-dd-HH-mm-ss")),'.mat') ;
+	fname = strcat('Z:\results\',string(datetime('now','Format',"yyyy-MM-dd-HH-mm-ss")),'.mat') ;
     save(fname,varlist{:});
    
     fprintf('time per one iteration %4.1f seconds\n\n',toc);
-    iterations = iterations + 1;
+    IterationNumber = IterationNumber + 1;
     
-    clearvars -except iterations ITERATIONS_COUNT timeToDisplay...
+    clearvars -except IterationNumber ITERATIONS_COUNT...
                       velocityMax altMax timeDuration timeStep
 end
 
