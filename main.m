@@ -12,7 +12,7 @@ global timeStep timeDuration
     velocityMax = 40;   %[m/sec] 
     altMax      = 1200; %[m]
 % modelling sub parameters 
-    ITERATIONS_COUNT = 10;
+    ITERATIONS_COUNT = 50;
 
 % variables
     IterationNumber       = 0;
@@ -132,11 +132,23 @@ while (IterationNumber <= ITERATIONS_COUNT)
                'intCtrl_status',...
                'satVisibleCount'};    
            
-
-	fname = strcat('results\',string(datetime('now','Format',"yyyy-MM-dd-HH-mm-ss")),'.mat') ;
-    save(fname,varlist{:});
-   
-    fprintf('time per one iteration %4.1f seconds\n\n',toc);
+    if isnan(end_position(1))
+        clc;
+        fprintf('Nan found in model\n\n');
+       
+        timeMark = datetime('now','Format',"yyyy-MM-dd-HH-mm-ss");
+       
+        fname = strcat('bad_results\',string(timeMark),'.mat') ;
+        save(fname,varlist{:});
+        
+        fname = strcat('bad_results\bad_traj',string(timeMark),'.mat') ;
+        copyfile 'Z:\track_normal.mat' 'bad_results\'
+        movefile('bad_results\track_normal.mat', fname);
+    else    
+        fname = strcat('results\',string(datetime('now','Format',"yyyy-MM-dd-HH-mm-ss")),'.mat') ;
+        save(fname,varlist{:});
+    end
+    fprintf('Time per iteration %4.1f seconds\n\n',toc);
     IterationNumber = IterationNumber + 1;
     
     clearvars -except IterationNumber ITERATIONS_COUNT...
