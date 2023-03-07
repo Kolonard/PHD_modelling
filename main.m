@@ -77,19 +77,35 @@ while (IterationNumber <= ITERATIONS_COUNT)
     res_passAlarm         = 0;
     
 %searh Integrity Control signals
+%     for ii = 2:((timeDuration - 10) / timeStep )
+%         if ((intCtrl_status(ii) == 0) && (intCtrl_status(ii-1) == 1))
+%             if ( ii * timeStep < corruptTimeStart ) % time of event
+%                 % False alarm (alarm before event)
+%                 res_falseAlarmCounter = res_falseAlarmCounter + 1;
+%             elseif ( ii * timeStep > corruptTimeStart + 10 ) && (res_passAlarm == 0) %DO-229 hard criteria (10 seconds for alarm)
+%                 %miss detection (no alarm in specified time)
+%                 res_missDetection = res_missDetection + 1; 
+%             else 
+%                 %alarm set in specifid time
+%                 res_passAlarm = res_passAlarm + 1; 
+%             end
+%         end
     for ii = 2:((timeDuration - 10) / timeStep )
-        if ((intCtrl_status(ii) == 0) && (intCtrl_status(ii-1) == 1))
-            if ( ii * timeStep < corruptTimeStart ) % time of event
-                % False alarm (alarm before event)
+        if ((intCtrl_status(ii) == 0) && (intCtrl_status(ii-1) == 1)) % event
+            if     ( ii * timeStep < corruptTimeStart ) % false allert before time
                 res_falseAlarmCounter = res_falseAlarmCounter + 1;
-            elseif ( ii * timeStep > corruptTimeStart + 10 ) && (res_passAlarm == 0) %DO-229 hard criteria (10 seconds for alarm)
-                %miss detection (no alarm in specified time)
-                res_missDetection = res_missDetection + 1; 
-            else 
-                %alarm set in specifid time
-                res_passAlarm = res_passAlarm + 1; 
+            elseif ( satVisibleCount(ii) - corruptSatCount > 4 ) %allert with enought satelites
+                res_falseAlarmCounter = res_falseAlarmCounter + 1;
+            elseif ( ii * timeStep >= corruptTimeStart )    &&... % window for normal operational
+                   ( ii * timeStep < corruptTimeStart + 10) &&...
+                   ( satVisibleCount(ii) - corruptSatCount <= 4 )
+                res_passAlarm = res_passAlarm + 1;
             end
         end
+    end
+    if ( corruptErrorType ~= 3 ) && ( res_passAlarm == 0 ) && ...
+       ( min(satVisibleCount(ii * timeStep : end)) - corruptSatCount <= 4)
+        res_missDetection = res_missDetection + 1;
     end
     
 %prepear for iteration save
@@ -113,10 +129,11 @@ while (IterationNumber <= ITERATIONS_COUNT)
                'timeDuration', 'timeInitial',...
                'IterationNumber',...
                'res_falseAlarmCounter', 'res_missDetection', 'res_passAlarm',...
-               'intCtrl_status'};    
+               'intCtrl_status',...
+               'satVisibleCount'};    
            
 
-	fname = strcat('Z:\results\',string(datetime('now','Format',"yyyy-MM-dd-HH-mm-ss")),'.mat') ;
+	fname = strcat('results\',string(datetime('now','Format',"yyyy-MM-dd-HH-mm-ss")),'.mat') ;
     save(fname,varlist{:});
    
     fprintf('time per one iteration %4.1f seconds\n\n',toc);
