@@ -29,7 +29,7 @@ global timeStep timeDuration
     
 %get trajectory parameters
 
-while (IterationNumber <= ITERATIONS_COUNT)
+while 1%(IterationNumber <= ITERATIONS_COUNT)
 %    add variavitivity 
     tic
     fprintf('iteration %i begin\n',IterationNumber)
@@ -42,9 +42,10 @@ while (IterationNumber <= ITERATIONS_COUNT)
     
 %set search parameters
 
-    K_fastCircle_psd     = get_rndValue(3,0.1,7);
+    K_fastCircle_psd     = get_rndValue(1,0.1,15);
     K_fastCircle_psd_dot = K_fastCircle_psd;%get_rndValue(3,0.1,5);
-    K_slowWindow         = get_rndValue(5,1,120);
+%     K_slowWindow         = get_rndValue(2,1,600);
+    K_slowWindow         = 600;
     K_slowSensivity      = get_rndValue(0.98,0.01,1);
      
 %set corruption    
