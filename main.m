@@ -12,7 +12,7 @@ global timeStep timeDuration
     velocityMax = 40;   %[m/sec] 
     altMax      = 1200; %[m]
 % modelling sub parameters 
-    ITERATIONS_COUNT = 50;
+    ITERATIONS_COUNT = 0;
 
 % variables
     IterationNumber       = 0;
@@ -29,7 +29,7 @@ global timeStep timeDuration
     
 %get trajectory parameters
 
-while 1%(IterationNumber <= ITERATIONS_COUNT)
+while (IterationNumber <= ITERATIONS_COUNT)
 %    add variavitivity 
     tic
     fprintf('iteration %i begin\n',IterationNumber)
@@ -42,14 +42,16 @@ while 1%(IterationNumber <= ITERATIONS_COUNT)
     
 %set search parameters
 
-    K_fastCircle_psd     = get_rndValue(1,0.1,15);
+    K_fastCircle_psd     = get_rndValue(1,0.1,7);
     K_fastCircle_psd_dot = K_fastCircle_psd;%get_rndValue(3,0.1,5);
-%     K_slowWindow         = get_rndValue(2,1,600);
-    K_slowWindow         = 600;
-    K_slowSensivity      = get_rndValue(0.98,0.01,1);
+    K_slowWindow         = get_rndValue(2,1,200);
+%     K_slowWindow         = 600;
+%     K_slowSensivity      = get_rndValue(0.98,0.01,1);
+    K_slowSensivity      = 0.98;
+     
      
 %set corruption    
-    corruptErrorType = randi(3,1);
+    corruptErrorType = 0;%randi(2,1);
     if     corruptErrorType == 1
         %step
         corruptPSDError = randi(500) / 100;
@@ -60,22 +62,24 @@ while 1%(IterationNumber <= ITERATIONS_COUNT)
         %no error
         corruptPSDError = 0;
     end
-    corruptSatCount  = randi(3);
+    corruptSatCount  = randi(3) + 2;
     corruptTimeStart = timeDuration*0.1 + randi(timeDuration - timeDuration*0.4);
     
 %new track file
     tracker;
     delete('Z:\track_normal.mat');
-    cnt = 0; for ii = 1: 10000 cnt = cnt * ii; end; clear cnt ii;% fuck matlab   
+%     cnt = 0; for ii = 1: 10000 cnt = cnt * ii; end; clear cnt ii;% fuck matlab   
     save('Z:\track_normal.mat');
-    cnt = 0; for ii = 1: 10000 cnt = cnt * ii; end; clear cnt ii;% fuck matlab
+%     cnt = 0; for ii = 1: 10000 cnt = cnt * ii; end; clear cnt ii;% fuck matlab
     simout = sim('base_model_lqeH',timeDuration - 10);   
-    cnt = 0; for ii = 1: 10000 cnt = cnt * ii; end; clear cnt ii; % fuck matlab
+%     cnt = 0; for ii = 1: 10000 cnt = cnt * ii; end; clear cnt ii; % fuck matlab
     bdclose all
 %reset memspace for results
     res_falseAlarmCounter = 0;
     res_missDetection     = 0;
     res_passAlarm         = 0;
+    
+    
     
 %searh Integrity Control signals
 %     for ii = 2:((timeDuration - 10) / timeStep )
