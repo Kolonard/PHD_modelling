@@ -53,10 +53,10 @@ while (IterationNumber <= ITERATIONS_COUNT)
      
      
 %set corruption    
-    corruptErrorType = 0;%randi(2,1);
+    corruptErrorType = randi(2,1);
     if     corruptErrorType == 1
         %step
-        corruptPSDError = randi(500) / 100;
+        corruptPSDError = randi(1500) / 100 + 5;
     elseif corruptErrorType == 2
         %ramp
         corruptPSDError = randi(500) / 100;
@@ -77,9 +77,9 @@ while (IterationNumber <= ITERATIONS_COUNT)
 %     cnt = 0; for ii = 1: 10000 cnt = cnt * ii; end; clear cnt ii; % fuck matlab
 % % % % % %     bdclose all
 %reset memspace for results
-    res_falseAlarmCounter = 0;
-    res_missDetection     = 0;
-    res_passAlarm         = 0;
+%     res_falseAlarmCounter = 0;
+%     res_missDetection     = 0;
+%     res_passAlarm         = 0;
     result = checkResult (intCtrl_status, intCtrl_timeInterval,...
                           corruptTimeStart, corruptSatCount, ...
                           satVisibleCount, timeStep); 
