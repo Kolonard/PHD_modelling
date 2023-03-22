@@ -78,41 +78,12 @@ while (IterationNumber <= ITERATIONS_COUNT)
     res_falseAlarmCounter = 0;
     res_missDetection     = 0;
     res_passAlarm         = 0;
-    
-    
-    
-%searh Integrity Control signals
-%     for ii = 2:((timeDuration - 10) / timeStep )
-%         if ((intCtrl_status(ii) == 0) && (intCtrl_status(ii-1) == 1))
-%             if ( ii * timeStep < corruptTimeStart ) % time of event
-%                 % False alarm (alarm before event)
-%                 res_falseAlarmCounter = res_falseAlarmCounter + 1;
-%             elseif ( ii * timeStep > corruptTimeStart + 10 ) && (res_passAlarm == 0) %DO-229 hard criteria (10 seconds for alarm)
-%                 %miss detection (no alarm in specified time)
-%                 res_missDetection = res_missDetection + 1; 
-%             else 
-%                 %alarm set in specifid time
-%                 res_passAlarm = res_passAlarm + 1; 
-%             end
-%         end
-    for ii = 2:((timeDuration - 10) / timeStep )
-        if ((intCtrl_status(ii) == 0) && (intCtrl_status(ii-1) == 1)) % event
-            if     ( ii * timeStep < corruptTimeStart ) % false allert before time
-                res_falseAlarmCounter = res_falseAlarmCounter + 1;
-            elseif ( satVisibleCount(ii) - corruptSatCount > 4 ) %allert with enought satelites
-                res_falseAlarmCounter = res_falseAlarmCounter + 1;
-            elseif ( ii * timeStep >= corruptTimeStart )    &&... % window for normal operational
-                   ( ii * timeStep < corruptTimeStart + 10) &&...
-                   ( satVisibleCount(ii) - corruptSatCount <= 4 )
-                res_passAlarm = res_passAlarm + 1;
-            end
-        end
-    end
-    if ( corruptErrorType ~= 3 ) && ( res_passAlarm == 0 ) && ...
-       ( min(satVisibleCount(ii * timeStep : end)) - corruptSatCount <= 4)
-        res_missDetection = res_missDetection + 1;
-    end
-    
+    result = checkResult (intCtrl_status, ...
+                          corruptTimeStart, corruptSatCount, ...
+                          satVisibleCount, timeStep); 
+    res_falseAlarmCounter = result(3);
+    res_missDetection     = result(2);
+    res_passAlarm         = result(1);                 
 %prepear for iteration save
     start_position    = [lat(1,1), lon(1,1), alt(1,1)];
     start_velicity    = [Ve(1,1) , Vn(1,1) , Vh(1,1)];
@@ -164,4 +135,60 @@ function value = get_rndValue(lowerLimit, step, upperLimit)
 % return uniform disturbet value from 'lowerLimit' to 'upperLimit' with setp 'step'
     xVar = lowerLimit:step:upperLimit;
     value = xVar(randi([1,length(xVar)],1));
+end
+
+
+function result = checkResult(intCtrl_status, ...
+                              corruptTimeStart, corruptSatCount,...
+                              satVisibleCount, ...
+                              timeStep)
+    
+    result = zeros(3,1); % pass, miss detect, false alert
+    for ii = 1:length(intCtrl_status)    
+        if result(1) == 0 %catch first signal
+            if intCtrl_status(ii) == 1 && ... % no integrity flag     #1
+               corruptTimeStart > ii * timeStep &&... % corrupt disable
+               satVisibleCount(ii) < 5 %not sats
+                    result(2) = 1; % miss detection
+                    result(1) = 1;
+            end
+            if intCtrl_status(ii) == 1 && ... % no integrity flag     #2 
+               corruptTimeStart <= ii * timeStep &&... % corrupt enable
+               satVisibleCount(ii) - corruptSatCount < 5 &&...%not sats
+               corruptTimeStart + intCtrl_timeInterval < ii * timeStep % break interval
+                    result(2) = 1; % miss detection
+                    result(1) = 1;
+            end
+            if intCtrl_status(ii) == 0 && ... % integrity flag        #3
+               corruptTimeStart > ii * timeStep &&... % corrupt disable
+               satVisibleCount(ii) < 5% no sats     
+                    result(1) = 1; %pass
+            end
+            if intCtrl_status(ii) == 0 && ... % integrity flag        #4
+               corruptTimeStart > ii * timeStep &&... % corrupt disable
+                satVisibleCount(ii) >= 5% no sats     
+                    result(3) = 1; %false alert               
+                    result(1) = 1;
+            end
+            if intCtrl_status(ii) == 0 && ... % integrity flag        #5
+               corruptTimeStart <= ii * timeStep &&... % corrupt enable
+               satVisibleCount(ii) - corruptSatCount >= 5% enought sats     
+                    result(3) = 1; %false alert
+                    result(1) = 1;
+            end
+            if intCtrl_status(ii) == 0 && ... % integrity flag        #6
+               corruptTimeStart <= ii * timeStep &&... % corrupt enable
+               satVisibleCount(ii) - corruptSatCount < 5 &&...  % no sats 
+               corruptTimeStart  + intCtrl_timeInterval <= ii * timeStep %break interval
+                    result(2) = 1; %miss detect
+                    result(1) = 1;
+            end
+            if intCtrl_status(ii) == 0 && ... % integrity flag        #7
+               corruptTimeStart <= ii * timeStep &&... % corrupt enable
+               satVisibleCount(ii) - corruptSatCount < 5 &&...  % no sats 
+               corruptTimeStart  + intCtrl_timeInterval > ii * timeStep %in interval
+                    result(1) = 1;%    pass                                    
+            end
+        end
+    end
 end
