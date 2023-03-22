@@ -1,7 +1,7 @@
 
 % top level modelling parameters 
 clear all
-bdclose all
+% bdclose all
 close all
 clc
 
@@ -13,7 +13,7 @@ global timeStep timeDuration
     altMax      = 1200; %[m]
 % modelling sub parameters 
     ITERATIONS_COUNT = 0;
-
+            
 % variables
     IterationNumber       = 0;
 %     timeToDisplay    = 1;
@@ -21,6 +21,8 @@ global timeStep timeDuration
     corruptSatCount  = 0;
     corruptTimeStart = 0;
     corruptErrorType = 0;
+% IC algorithm configuration
+    intCtrl_timeInterval = 10;
     
     K_fastCircle_psd     = 0;
     K_fastCircle_psd_dot = 0;
@@ -73,12 +75,12 @@ while (IterationNumber <= ITERATIONS_COUNT)
 %     cnt = 0; for ii = 1: 10000 cnt = cnt * ii; end; clear cnt ii;% fuck matlab
     simout = sim('base_model_lqeH',timeDuration - 10);   
 %     cnt = 0; for ii = 1: 10000 cnt = cnt * ii; end; clear cnt ii; % fuck matlab
-    bdclose all
+% % % % % %     bdclose all
 %reset memspace for results
     res_falseAlarmCounter = 0;
     res_missDetection     = 0;
     res_passAlarm         = 0;
-    result = checkResult (intCtrl_status, ...
+    result = checkResult (intCtrl_status, intCtrl_timeInterval,...
                           corruptTimeStart, corruptSatCount, ...
                           satVisibleCount, timeStep); 
     res_falseAlarmCounter = result(3);
@@ -105,7 +107,7 @@ while (IterationNumber <= ITERATIONS_COUNT)
                'timeDuration', 'timeInitial',...
                'IterationNumber',...
                'res_falseAlarmCounter', 'res_missDetection', 'res_passAlarm',...
-               'intCtrl_status',...
+               'intCtrl_status', 'intCtrl_timeInterval',...
                'satVisibleCount'};    
            
     if isnan(end_position(1))
@@ -127,7 +129,7 @@ while (IterationNumber <= ITERATIONS_COUNT)
     fprintf('Time per iteration %4.1f seconds\n\n',toc);
     IterationNumber = IterationNumber + 1;
     
-    clearvars -except IterationNumber ITERATIONS_COUNT...
+    clearvars -except IterationNumber ITERATIONS_COUNT intCtrl_timeInterval...
                       velocityMax altMax timeDuration timeStep
 end
 
@@ -138,7 +140,7 @@ function value = get_rndValue(lowerLimit, step, upperLimit)
 end
 
 
-function result = checkResult(intCtrl_status, ...
+function result = checkResult(intCtrl_status, intCtrl_timeInterval,...
                               corruptTimeStart, corruptSatCount,...
                               satVisibleCount, ...
                               timeStep)
