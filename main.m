@@ -31,7 +31,7 @@ global timeStep timeDuration
     
 %get trajectory parameters
 
-while (IterationNumber <= ITERATIONS_COUNT)
+while 1%(IterationNumber <= ITERATIONS_COUNT)
 %    add variavitivity 
     tic
     fprintf('iteration %i begin\n',IterationNumber)
