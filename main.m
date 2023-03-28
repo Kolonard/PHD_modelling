@@ -56,10 +56,10 @@ while 1%(IterationNumber <= ITERATIONS_COUNT)
     corruptErrorType = randi(2,1);
     if     corruptErrorType == 1
         %step
-        corruptPSDError = randi(1500) / 100 + 5;
+        corruptPSDError = randi(1200) / 100 + 8;
     elseif corruptErrorType == 2
         %ramp
-        corruptPSDError = randi(500) / 100;
+        corruptPSDError = randi(450) / 100 + 0.5;
     else
         %no error
         corruptPSDError = 0;
