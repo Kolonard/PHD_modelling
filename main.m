@@ -5,6 +5,15 @@ clear all
 close all
 clc
 
+
+%check & create folders for modelling results
+if not(isfolder('results'))
+    mkdir('results')
+end  
+if not(isfolder('bad_results'))
+    mkdir('bad_results')
+end
+
 global timeStep timeDuration
     timeStep     = 0.1; % [sec]
     timeDuration = 1200; % [sec] // 20 minuts * 60 seconds
