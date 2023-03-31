@@ -8,7 +8,7 @@ poligon              = [0,0,0];
 crds                 = [0;0;0];
 flatPoligon          = [0;0;0];
 timeStep             = 0.1;
-intCtrl_timeInterval = 10;%[sec]
+intCtrl_timeInterval = 60;%[sec]
 
 
 % crCntr

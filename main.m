@@ -62,17 +62,17 @@ while 1%(IterationNumber <= ITERATIONS_COUNT)
      
      
 %set corruption    
-    corruptErrorType = randi(2,1);
-    if     corruptErrorType == 1
-        %step
-        corruptPSDError = randi(1200) / 100 + 8;
-    elseif corruptErrorType == 2
-        %ramp
-        corruptPSDError = randi(400) / 100 + 1.0;
-    else
-        %no error
-        corruptPSDError = 0;
-    end
+    corruptErrorType = 2;%randi(2,1);
+%     if     corruptErrorType == 1
+%         %step
+%         corruptPSDError = randi(1200) / 100 + 8;
+%     elseif corruptErrorType == 2
+%         %ramp
+        corruptPSDError = 5;%randi(400) / 100 + 1.0;
+%     else
+%         %no error
+%         corruptPSDError = 0;
+%     end
     corruptSatCount  = randi(3) + 2;
     corruptTimeStart = timeDuration*0.1 + randi(timeDuration - timeDuration*0.4);
     
