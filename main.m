@@ -1,7 +1,6 @@
 
 % top level modelling parameters 
 clear all
-% bdclose all
 close all
 clc
 
@@ -32,6 +31,7 @@ global timeStep timeDuration
     corruptErrorType = 0;
 % IC algorithm configuration
     intCtrl_timeInterval = 10;
+    horizontalProtectionLevel = 16;%[m] %0.01 marine mile
     
     K_fastCircle_psd     = 0;
     K_fastCircle_psd_dot = 0;
@@ -52,14 +52,10 @@ while 1%(IterationNumber <= ITERATIONS_COUNT)
     end
     
 %set search parameters
-
     K_fastCircle_psd     = get_rndValue(1,0.1,7);
     K_fastCircle_psd_dot = K_fastCircle_psd;%get_rndValue(3,0.1,5);
     K_slowWindow         = get_rndValue(2,1,200);
-%     K_slowWindow         = 600;
-%     K_slowSensivity      = get_rndValue(0.98,0.01,1);
-    K_slowSensivity      = 0.98;
-     
+    K_slowSensivity      = 0.98;    
      
 %set corruption    
     corruptErrorType = 2;%randi(2,1);
@@ -73,25 +69,27 @@ while 1%(IterationNumber <= ITERATIONS_COUNT)
 %         %no error
 %         corruptPSDError = 0;
 %     end
+
     corruptSatCount  = randi(3) + 2;
     corruptTimeStart = timeDuration*0.1 + randi(timeDuration - timeDuration*0.4);
     
 %new track file
     tracker;
+%check correct track parameters
+    if checkTrack(lat, lon, alt) 
+        continue;
+    end
     delete('Z:\track_normal.mat');
-%     cnt = 0; for ii = 1: 10000 cnt = cnt * ii; end; clear cnt ii;% fuck matlab   
     save('Z:\track_normal.mat');
-%     cnt = 0; for ii = 1: 10000 cnt = cnt * ii; end; clear cnt ii;% fuck matlab
     simout = sim('base_model_lqeH',timeDuration - 10);   
-%     cnt = 0; for ii = 1: 10000 cnt = cnt * ii; end; clear cnt ii; % fuck matlab
-% % % % % %     bdclose all
-%reset memspace for results
-%     res_falseAlarmCounter = 0;
-%     res_missDetection     = 0;
-%     res_passAlarm         = 0;
-    result = checkResult (intCtrl_status, intCtrl_timeInterval,...
-                          corruptTimeStart, corruptSatCount, ...
-                          satVisibleCount, timeStep); 
+
+    result = checkResult(intCtrl_status, intCtrl_timeInterval,...
+                          corruptTimeStart, corruptSatCount,...
+                          crdErr, ... 
+                          satVisibleCount, ...
+                          horizontalProtectionLevel,...
+                          timeStamp);
+
     res_falseAlarmCounter = result(3);
     res_missDetection     = result(2);
     res_passAlarm         = result(1);                 
@@ -116,10 +114,10 @@ while 1%(IterationNumber <= ITERATIONS_COUNT)
                'timeDuration', 'timeInitial',...
                'IterationNumber',...
                'res_falseAlarmCounter', 'res_missDetection', 'res_passAlarm',...
-               'intCtrl_status', 'intCtrl_timeInterval',...
+               'intCtrl_status', 'intCtrl_timeInterval','horizontalProtectionLevel'...
                'satVisibleCount'};    
            
-    if isnan(end_position(1))
+    if isnan(end_position(1)) || crdErr(end) >= 100
         clc;
         fprintf('Nan found in model\n\n');
        
@@ -139,7 +137,8 @@ while 1%(IterationNumber <= ITERATIONS_COUNT)
     IterationNumber = IterationNumber + 1;
     
     clearvars -except IterationNumber ITERATIONS_COUNT intCtrl_timeInterval...
-                      velocityMax altMax timeDuration timeStep
+                      velocityMax altMax timeDuration timeStep ...
+                      horizontalProtectionLevel
 end
 
 function value = get_rndValue(lowerLimit, step, upperLimit)
@@ -148,7 +147,107 @@ function value = get_rndValue(lowerLimit, step, upperLimit)
     value = xVar(randi([1,length(xVar)],1));
 end
 
+function result = checkTrack(lat, lon, alt)
+    result = 0;
+    if find(lat > 1.5708)  result = 1; end% 1.5708 rad = 90 deg
+    if find(lat < 0)       result = 1; end
+    if find(lon >= 6.2832) result = 1; end% 6.2832 rad = 360 deg
+    if find(lon < 0)       result = 1; end
+    if find(alt < 0)       result = 1; end
+end
+%--------------------------------------------------------------------------
+function result = checkResult(intCtrl_status, intCtrl_timeInterval,...
+                              corruptTimeStart, corruptSatCount,...
+                              crdErr, ... 
+                              satVisibleCount, ...
+                              horizontalProtectionLevel,...
+                              timeStamp)
+    result = zeros(3,1); % pass, miss detect, false alert
+    for ii = 1:length(intCtrl_status)
+        %#1
+        if intCtrl_status(ii)  == 0        &&...
+           corruptTimeStart    >  timeStamp(ii) - timeStamp(1) &&...% curent time earlier corruptTimeStart
+           satVisibleCount(ii) < 5
+                result(1) = 1; %correct allert
+                break; 
+        end
+        %#2
+        if intCtrl_status(ii)  == 0        &&...
+           corruptTimeStart    >  timeStamp(ii) - timeStamp(1) &&...
+           satVisibleCount(ii) >= 5
+                result(3) = 1; %false allert
+                break;
+        end    
+        %#3
+        if intCtrl_status(ii)  == 0         &&...
+           corruptTimeStart    <= timeStamp(ii) - timeStamp(1) &&...
+           crdErr(ii)          <= horizontalProtectionLevel
+                result(1) = 1;
+                break;%correct allert 
+        end  
+        %#4
+        if intCtrl_status(ii)  == 0         &&...
+           corruptTimeStart    <= timeStamp(ii) - timeStamp(1) &&...
+           crdErr(ii)          >  horizontalProtectionLevel &&...
+           corruptTimeStart + intCtrl_timeInterval > timeStamp(ii) % не выход за интервал
+                result(1) = 1;
+                break;%correct allert 
+        end 
+        %#5
+        if intCtrl_status(ii)  == 0         &&...
+           corruptTimeStart    <= timeStamp(ii) - timeStamp(1) &&...
+           crdErr(ii)          >  horizontalProtectionLevel &&...
+           corruptTimeStart + intCtrl_timeInterval <= timeStamp(ii) % выход за интервал
+                result(3) = 1; 
+                break;
+        end
+        %#6
+        if (intCtrl_status(ii) == 1                           &&...
+            corruptTimeStart   >   timeStamp(ii) - timeStamp(1)&&...
+            crdErr(ii)         <=  horizontalProtectionLevel)
+                continue;
+        end
+        %#7
+        if intCtrl_status(ii)  == 1         &&...
+           corruptTimeStart    >  timeStamp(ii) - timeStamp(1) &&...
+           crdErr(ii)          >  horizontalProtectionLevel &&...
+           corruptTimeStart + intCtrl_timeInterval >= timeStamp(ii)
+                continue;
+        end
+        %#8
+        if intCtrl_status(ii)  == 1         &&...
+           corruptTimeStart    >   timeStamp(ii) - timeStamp(1) &&...
+           crdErr(ii)          >  horizontalProtectionLevel &&...
+           corruptTimeStart + intCtrl_timeInterval < timeStamp(ii)
+                result(2) = 1; 
+                break;
+        end
+        %#9
+        if intCtrl_status(ii)  == 1         &&...
+           corruptTimeStart    <=  timeStamp(ii) - timeStamp(1) &&...
+           crdErr(ii)          <=  horizontalProtectionLevel
+                continue;
+        end
+        %#10
+        if intCtrl_status(ii)  == 1         &&...
+           corruptTimeStart    <= timeStamp(ii) - timeStamp(1) &&...
+           crdErr(ii)          >  horizontalProtectionLevel &&...
+           corruptTimeStart + intCtrl_timeInterval >= timeStamp(ii)
+                continue;
+        end
+        %#11
+        if intCtrl_status(ii)  == 1         &&...
+           corruptTimeStart    <= timeStamp(ii) - timeStamp(1) &&...
+           crdErr(ii)          >  horizontalProtectionLevel &&...
+           corruptTimeStart + intCtrl_timeInterval < timeStamp(ii)
+                result(2) = 1; 
+                break;
+        end
+    end
+end
 
+%--------------------------------------------------------------------------
+%{
 function result = checkResult(intCtrl_status, intCtrl_timeInterval,...
                               corruptTimeStart, corruptSatCount,...
                               satVisibleCount, ...
@@ -203,3 +302,5 @@ function result = checkResult(intCtrl_status, intCtrl_timeInterval,...
         end
     end
 end
+%}
+
