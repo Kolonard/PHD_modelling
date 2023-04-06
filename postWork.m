@@ -17,6 +17,7 @@ for jj = 3:length(listOfRes)
         file = load(listOfRes(jj).name);
     catch
         fprintf('Corrupted file %s \n\n',listOfRes(jj).name);
+        continue
     end
     if (file.end_position(1) == 'Nan')
         continue
