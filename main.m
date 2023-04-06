@@ -132,7 +132,7 @@ while 1%(IterationNumber <= ITERATIONS_COUNT)
         copyfile 'Z:\track_normal.mat' 'bad_results\'
         movefile('bad_results\track_normal.mat', fname);
     else    
-        fname = strcat('results\',string(datetime('now','Format',"yyyy-MM-dd-HH-mm-ss")),'.mat') ;
+        fname = strcat('results\',string(datetime('now','Format',"yyyy-MM-dd-HH-mm-ss")), string(randi(1000)),'.mat') ;
         save(fname,varlist{:});
     end
     fprintf('Time per iteration %4.1f seconds\n\n',toc);
