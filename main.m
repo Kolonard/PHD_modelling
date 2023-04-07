@@ -117,7 +117,7 @@ while 1%(IterationNumber <= ITERATIONS_COUNT)
                'intCtrl_status', 'intCtrl_timeInterval','horizontalProtectionLevel'...
                'crdErr','satVisibleCount'};    
            
-    if isnan(end_position(1)) || crdErr(end) >= 100
+    if isnan(end_position(1)) || crdErr(end) >= 10000
         clc;
         fprintf('Nan found in model\n\n');
        
