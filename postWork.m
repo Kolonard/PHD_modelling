@@ -108,37 +108,41 @@ fprintf('Merge done\n\n');
 % % % % % % %             pos = pos + 1;
 % % % % % % %         end
 % % % % % % %     end
-% % 
-fprintf('Draw prerear\n');
+
+%%
+makeSurf(poligon);
+%%
+makeShortSurf(4.5,8.5, 0, 40, poligon)
+%%
+
+
+
+function makeSurf(lenX,poligon)
+    fprintf('Draw prerear\n');
 figure
     %poligin
-    lenCompensation = 0.1;%(max(poligon(:,1)) - min(poligon(:,1))) / (max(poligon(:,2)) - min(poligon(:,2)));
-    xv = linspace(min(poligon(:,1)), max(poligon(:,1)), 50 );%
-    yv = linspace(min(poligon(:,2)), max(poligon(:,2)), 50 );% * lenCompensation
+%     lenX = 1000;
+    lenCompensation = (max(poligon(:,1)) - min(poligon(:,1))) / (max(poligon(:,2)) - min(poligon(:,2)));
+    xv = linspace(min(poligon(:,1)), max(poligon(:,1)), lenX );%
+    yv = linspace(min(poligon(:,2)), max(poligon(:,2)), lenX*lenCompensation );% * lenCompensation
     [X,Y] = meshgrid(xv, yv);
-
     Z = griddata(poligon(:,1),poligon(:,2),poligon(:,3),X,Y,'natural');
-    
-%     surf(peaks(20))
-
     surf(X, Y, Z);
-%     colormap summer
     shading interp
-%     mesh(poligon(:,1),poligon(:,2),poligon(:,3))
 %cftool
+end
 
-
-
-
-
-
-
-
-
-
-
-
-
+function makeShortSurf(Xmin,Xmax, Ymin,Ymax, poligon)
+    shortPoligon = zeros(3);
+    for ii = 1:length(poligon(:,1))
+        if poligon(ii,1) >= Xmin && poligon(ii,1) <= Xmax &&...
+           poligon(ii,2) >= Ymin && poligon(ii,2) <= Ymax 
+            shortPoligon(end + 1,:) = poligon(ii,:);
+        end
+    end
+    shortPoligon(1,:) = [];
+    makeSurf(length(shortPoligon(:,1)), shortPoligon);
+end
 %{
     for ii = 1:length(file.intCtrl_status)
        
