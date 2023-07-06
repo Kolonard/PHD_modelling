@@ -110,7 +110,7 @@ fprintf('Merge done\n\n');
 % % % % % % %     end
 
 %%
-makeSurf(poligon);
+makeSurf(1000, poligon);
 %%
 makeShortSurf(4.5,8.5, 0, 40, poligon)
 %%
@@ -140,6 +140,8 @@ function makeShortSurf(Xmin,Xmax, Ymin,Ymax, poligon)
             shortPoligon(end + 1,:) = poligon(ii,:);
         end
     end
+    shortPoligon(1,:) = [];
+    shortPoligon(1,:) = [];
     shortPoligon(1,:) = [];
     makeSurf(length(shortPoligon(:,1)), shortPoligon);
 end
