@@ -3,15 +3,16 @@
 %Calculate array of basic trajectory parameters
 %--------------------------------------------------------------------------
 % clc; clear;
-%constants
+% constants
 % global timeStep timeDuration
 %     timeStep     = 0.1; % [sec]
 %     timeDuration = 1200; % [sec] // 20 minuts * 60 seconds
 
 % altMax   = 1200;%  [m]
 
-%PZ-90.11 parameters
+
 global beta beta1 q ge a e2
+%PZ-90.11 parameters
     beta  = double(0.0053171);
     beta1 = double(71*10^-7);
     q     = double(0.00346775);
@@ -41,6 +42,7 @@ global beta beta1 q ge a e2
     
 %--------------------------------------------------------------------------
 %initial conditions
+    %initial coordinats
     lat = deg2rad( get_rndValue(0, 3, 90) );
     lonStep = 360 / ( 360 / min([3/cos(lat),360]) );
     lon = deg2rad( get_rndValue(0, lonStep, 360) );

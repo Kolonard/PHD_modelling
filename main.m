@@ -3,7 +3,8 @@
 clear all
 close all
 clc
-
+modelMode = 1; %( 0 - self generated traj, 1 - extern traj )    
+%modelMode = 1;
 
 %check & create folders for modelling results
 if not(isfolder('results'))
@@ -21,91 +22,113 @@ global timeStep timeDuration
     altMax      = 1200; %[m]
 % modelling sub parameters 
     ITERATIONS_COUNT = 0;
-            
 % variables
-    IterationNumber       = 0;
-%     timeToDisplay    = 1;
-    corruptPSDError  = 0; % amplitude of pseudorange error
-    corruptSatCount  = 0;
-    corruptTimeStart = 0;
-    corruptErrorType = 0;
+    IterationNumber  = 0;
 % IC algorithm configuration
     intCtrl_timeInterval = 10;
-    horizontalProtectionLevel = 16;%[m] %0.01 marine mile
-    
-    K_fastCircle_psd     = 0;
-    K_fastCircle_psd_dot = 0;
-    K_slowWindow         = 0;
-    K_slowSensivity      = 0;
-    
-%get trajectory parameters
-
-while 1%(IterationNumber <= ITERATIONS_COUNT)
+    horizontalProtectionLevel = 16;%[m] %0.01 marine mile   
+while 1
+%check mode( 0 - self generated traj, 1 - extern traj )    
 %    add variavitivity 
     tic
     fprintf('iteration %i begin\n',IterationNumber)
-    if randi(2,1)  ==  2 % 50% cases with rotation
-        dhdg =  deg2rad (randn(1) ./ 2.5); % random angle speed from -1.5 to 1.5 deg per sec
-        dpth = 0; drll = 0;
-    else
-        dhdg = 0; dpth = 0; drll = 0;
-    end
-    
-%set search parameters
-    K_fastCircle_psd     = get_rndValue(1,0.1,7);
-    K_fastCircle_psd_dot = K_fastCircle_psd;%get_rndValue(3,0.1,5);
-    K_slowWindow         = get_rndValue(2,1,200);
-    K_slowSensivity      = 0.98;    
-     
-%set corruption    
-    corruptErrorType = 2;%randi(2,1);
-%     if     corruptErrorType == 1
-%         %step
-%         corruptPSDError = randi(1200) / 100 + 8;
-%     elseif corruptErrorType == 2
-%         %ramp
-        corruptPSDError = 5;%randi(400) / 100 + 1.0;
-%     else
-%         %no error
-%         corruptPSDError = 0;
-%     end
+    if modelMode == 0
+        
+        if randi(2,1)  ==  2 % 50% cases with rotation
+            dhdg =  deg2rad (randn(1) ./ 2.5); % random angle speed from -1.5 to 1.5 deg per sec
+            dpth = 0; drll = 0;
+        else
+            dhdg = 0; dpth = 0; drll = 0;
+        end
+    %set search parameters
+        K_fastCircle_psd     = get_rndValue(1,0.1,7);
+        K_fastCircle_psd_dot = K_fastCircle_psd;%get_rndValue(3,0.1,5);
+        K_slowWindow         = get_rndValue(2,1,200);
+        K_slowSensivity      = 0.98;    
 
-    corruptSatCount  = randi(3) + 2;
-    corruptTimeStart = timeDuration*0.1 + randi(timeDuration - timeDuration*0.4);
-    
-%new track file
-    tracker;
-%check correct track parameters
-    if checkTrack(lat, lon, alt) 
-        continue;
+        tracker; % generate new track file
+        if checkTrack(lat, lon, alt)%check correct track parameters
+            continue; 
+        end 
+%         delete('Z:\track_normal.mat');
+%         save(  'Z:\track_normal.mat');
+    else
+            
+        K_fastCircle_psd     = 8;
+        K_fastCircle_psd_dot = 20;
+        K_slowWindow         = 10;
+        K_slowSensivity      = 0.98;
+        
+        extData = load('RealFlight/SVOtoMSK.mat');
+        
+        acc = extData.tied_acc';
+        grs = extData.tied_grs';
+        
+        hdg = extData.heading';
+        pth = extData.pitch';
+        rll = extData.roll';
+        
+        Ve = extData.lla_vel(:,2)';
+        Vn = extData.lla_vel(:,1)';
+        Vh = extData.lla_vel(:,3)';
+
+        lat = extData.lla_pos(:,1)';
+        lon = extData.lla_pos(:,2)';
+        alt = extData.lla_pos(:,3)';
+        
+        timeStamp = extData.time';
+        
+        velocity = 0;
+        velocityMax = max(Ve.^2 + Vn.^2 + Vh.^2);
+        altMax = max(alt);
+        timeInitial   = 0;
+        timeDuration = max(extData.time);
+        
+        pnt = length(extData.time);
+        dhdg = 0; dpth = 0; drll = 0;
+        clear extData;
     end
+%set corruption 
+    corruptErrorType = 2;%randi(2,1);
+    switch corruptErrorType
+        case 1 %step
+            corruptPSDError = randi(1200) / 100 + 8;
+        case 2 %ramp
+            corruptPSDError = 5;%randi(400) / 100 + 1.0;
+        otherwise    
+            corruptPSDError = 0;
+    end
+    corruptSatCount  = randi(3) + 2;
+    corruptTimeStart = timeDuration*0.1 + randi(int32(timeDuration - timeDuration*0.4));
+%final prepear to modelling
     delete('Z:\track_normal.mat');
-    save('Z:\track_normal.mat');
-    simout = sim('base_model_lqeH',timeDuration - 10);   
+    save(  'Z:\track_normal.mat');
+%ask to simulink
+    simout = sim('SimFiles/base_model_lqeH',timeDuration - 10);   
 
     result = checkResult(intCtrl_status, intCtrl_timeInterval,...
-                          corruptTimeStart, corruptSatCount,...
-                          crdErr, ... 
-                          satVisibleCount, ...
-                          horizontalProtectionLevel,...
-                          timeStamp);
+                         corruptTimeStart, corruptSatCount,...
+                         crdErr, ... 
+                         satVisibleCount, ...
+                         horizontalProtectionLevel,...
+                         timeStamp);
 
     res_falseAlarmCounter = result(3);
     res_missDetection     = result(2);
     res_passAlarm         = result(1);                 
 %prepear for iteration save
-    start_position    = [lat(1,1), lon(1,1), alt(1,1)];
-    start_velicity    = [Ve(1,1) , Vn(1,1) , Vh(1,1)];
-    start_orientation = [hdg(1,1), pth(1,1), rll(1,1)];
-    end_position      = [lat(1,1) + lat_err(end,1),...
-                         lon(1,1) + lon_err(end,1),...
-                         alt(1,1) + alt_err(end,1)];   
-    end_velocity      = [Ve(1,1) + Ve_err(end,1),...
-                         Vn(1,1) + Vn_err(end,1),...
-                         Vh(1,1) + Vh_err(end,1)];
-    end_orientation   = [hdg(1,1) + heading_err(end,1),...
-                         pth(1,1) + pitch_err(end,1),...
-                         rll(1,1) + roll_err(end,1)]; 
+    start_position        = [lat(1,1), lon(1,1), alt(1,1)];
+    start_velicity        = [Ve(1,1) , Vn(1,1) , Vh(1,1)];
+    start_orientation     = [hdg(1,1), pth(1,1), rll(1,1)];
+    end_position          = [lat(1,1) + lat_err(end,1),...
+                             lon(1,1) + lon_err(end,1),...
+                             alt(1,1) + alt_err(end,1)];   
+    end_velocity          = [Ve(1,1) + Ve_err(end,1),...
+                             Vn(1,1) + Vn_err(end,1),...
+                             Vh(1,1) + Vh_err(end,1)];
+    end_orientation       = [hdg(1,1) + heading_err(end,1),...
+                             pth(1,1) + pitch_err(end,1),...
+                             rll(1,1) + roll_err(end,1)]; 
     
     varlist = {'start_position', 'start_position', 'start_orientation',...
                'end_position'  , 'end_velocity'  , 'end_orientation'  ,...
@@ -115,22 +138,20 @@ while 1%(IterationNumber <= ITERATIONS_COUNT)
                'IterationNumber',...
                'res_falseAlarmCounter', 'res_missDetection', 'res_passAlarm',...
                'intCtrl_status', 'intCtrl_timeInterval','horizontalProtectionLevel'...
-               'crdErr','satVisibleCount'};    
+               'crdErr','satVisibleCount','modelMode'};    
            
     if isnan(end_position(1)) || crdErr(end) >= 10000
         clc;
         fprintf('Nan found in model\n\n');
-       
-        timeMark = datetime('now','Format',"yyyy-MM-dd-HH-mm-ss");
-       
-        fname = strcat('bad_results\',string(timeMark),'.mat') ;
-        save(fname,varlist{:});
-        
-        fname = strcat('bad_results\bad_traj',string(timeMark),'.mat') ;
-        copyfile 'Z:\track_normal.mat' 'bad_results\'
-        movefile('bad_results\track_normal.mat', fname);
+        continue;
+        %timeMark = datetime('now','Format',"yyyy-MM-dd-HH-mm-ss");
+        %fname = strcat('bad_results\',string(timeMark),'.mat') ;
+        %save(fname,varlist{:});
+        %fname = strcat('bad_results\bad_traj',string(timeMark),'.mat') ;
+        %copyfile 'Z:\track_normal.mat' 'bad_results\'
+        %movefile('bad_results\track_normal.mat', fname);
     else    
-        fname = strcat('results\',string(datetime('now','Format',"yyyy-MM-dd-HH-mm-ss")), string(randi(1000)),'.mat') ;
+        fname = strcat('results\',string(datetime('now','Format',"yyyy-MM-dd-HH-mm-ss")), string(randi(10000)),'.mat') ;
         save(fname,varlist{:});
     end
     fprintf('Time per iteration %4.1f seconds\n\n',toc);
@@ -138,22 +159,22 @@ while 1%(IterationNumber <= ITERATIONS_COUNT)
     
     clearvars -except IterationNumber ITERATIONS_COUNT intCtrl_timeInterval...
                       velocityMax altMax timeDuration timeStep ...
-                      horizontalProtectionLevel
+                      horizontalProtectionLevel modelMode
 end
 
 function value = get_rndValue(lowerLimit, step, upperLimit)
 % return uniform disturbet value from 'lowerLimit' to 'upperLimit' with setp 'step'
-    xVar = lowerLimit:step:upperLimit;
+    xVar  = lowerLimit:step:upperLimit;
     value = xVar(randi([1,length(xVar)],1));
 end
 
 function result = checkTrack(lat, lon, alt)
     result = 0;
-    if find(lat > 1.5708)  result = 1; end% 1.5708 rad = 90 deg
-    if find(lat < 0)       result = 1; end
-    if find(lon >= 6.2832) result = 1; end% 6.2832 rad = 360 deg
-    if find(lon < 0)       result = 1; end
-    if find(alt < 0)       result = 1; end
+    if find( lat >  1.5708 )  result = 1; end% 1.5708 rad = 90 deg
+    if find( lat < -1.5708 )  result = 1; end
+    if find( lon >= 6.2832 )  result = 1; end% 6.2832 rad = 360 deg
+    if find( lon <  0      )  result = 1; end
+    if find( alt < -10     )  result = 1; end
 end
 %--------------------------------------------------------------------------
 function result = checkResult(intCtrl_status, intCtrl_timeInterval,...
