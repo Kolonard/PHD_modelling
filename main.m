@@ -3,8 +3,11 @@
 clear all
 close all
 clc
-modelMode = 1; %( 0 - self generated traj, 1 - extern traj )    
-%modelMode = 1;
+modelMode          = 'SELFGENERATE';% SELFGENERATE - generating trajectoty parameters in DO229 style
+                                    % EXTERNALGENR - read trajectory
+                                    % parameters from file
+psdDistortionModel = 'DO229STYLE';  % DO229STYLE - gaussian model with left&right sides
+                                    % REALSTYLE  - gaussian model with ONLY right side
 
 %check & create folders for modelling results
 if not(isfolder('results'))
@@ -32,7 +35,7 @@ while 1
 %    add variavitivity 
     tic
     fprintf('iteration %i begin\n',IterationNumber)
-    if modelMode == 0
+    if modelMode == 'SELFGENERATE'
         
         if randi(2,1)  ==  2 % 50% cases with rotation
             dhdg =  deg2rad (randn(1) ./ 2.5); % random angle speed from -1.5 to 1.5 deg per sec
@@ -52,7 +55,7 @@ while 1
         end 
 %         delete('Z:\track_normal.mat');
 %         save(  'Z:\track_normal.mat');
-    else
+    elseif modelMode == 'EXTERNALGENR'
             
         K_fastCircle_psd     = 8;
         K_fastCircle_psd_dot = 20;
@@ -87,6 +90,8 @@ while 1
         pnt = length(extData.time);
         dhdg = 0; dpth = 0; drll = 0;
         clear extData;
+    else 
+        error('wrong input parameter in  --modelmode--')
     end
 %set corruption 
     corruptErrorType = 2;%randi(2,1);
@@ -138,7 +143,7 @@ while 1
                'IterationNumber',...
                'res_falseAlarmCounter', 'res_missDetection', 'res_passAlarm',...
                'intCtrl_status', 'intCtrl_timeInterval','horizontalProtectionLevel'...
-               'crdErr','satVisibleCount','modelMode'};    
+               'crdErr','satVisibleCount','modelMode', 'psdDistortionModel'};    
            
     if isnan(end_position(1)) || crdErr(end) >= 10000
         clc;
@@ -159,7 +164,8 @@ while 1
     
     clearvars -except IterationNumber ITERATIONS_COUNT intCtrl_timeInterval...
                       velocityMax altMax timeDuration timeStep ...
-                      horizontalProtectionLevel modelMode
+                      horizontalProtectionLevel modelMode...
+                      psdDistortionModel
 end
 
 function value = get_rndValue(lowerLimit, step, upperLimit)
