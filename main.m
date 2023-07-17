@@ -3,19 +3,19 @@
 clear all
 close all
 clc
-modelMode          = 'SELFGENERATE';% SELFGENERATE - generating trajectoty parameters in DO229 style
+
+task.modelMode          = 'SELFGENERATE';% SELFGENERATE - generating trajectoty parameters in DO229 style
                                     % EXTERNALGENR - read trajectory
                                     % parameters from file
-psdDistortionModel = 'DO229STYLE';  % DO229STYLE - gaussian model with left&right sides
-                                    % REALSTYLE  - gaussian model with ONLY right side
+task.psdDistortionModel = 'REAL_STYLE';  % DO229STYLE - gaussian model with left&right sides
+                                    % REAL_STYLE - gaussian model with ONLY right side
 
 %check & create folders for modelling results
-if not(isfolder('results'))
-    mkdir('results')
-end  
-if not(isfolder('bad_results'))
-    mkdir('bad_results')
+if checkFolder()
+    error("Folders for resultats not exsisted and can't be created")
 end
+                                    
+                                    
 
 global timeStep timeDuration
     timeStep     = 0.1; % [sec]
@@ -30,6 +30,24 @@ global timeStep timeDuration
 % IC algorithm configuration
     intCtrl_timeInterval = 10;
     horizontalProtectionLevel = 16;%[m] %0.01 marine mile   
+
+% Cnovert configuration
+    if     task.psdDistortionModel == 'DO229STYLE'
+                psdDistortionModel = 0;
+    elseif task.psdDistortionModel == 'REAL_STYLE'
+                psdDistortionModel = 1;
+    else
+                error('ERROR: wrong PSD model type (check DO229STYLE||REAL_STYLE)')
+    end
+    if     task.modelMode == 'SELFGENERATE'
+                modelMode =  'SELFGENERATE';
+    elseif task.modelMode == 'EXTERNALGENR'
+                modelMode =  'EXTERNALGENR';
+    else
+                error('ERROR: wrong mode type (check SELFGENERATE||EXTERNALGENR)')
+    end
+   clear task
+   
 while 1
 %check mode( 0 - self generated traj, 1 - extern traj )    
 %    add variavitivity 
@@ -272,6 +290,19 @@ function result = checkResult(intCtrl_status, intCtrl_timeInterval,...
         end
     end
 end
+
+function result = checkFolder()
+    result = 0;
+    if not(isfolder('results'))
+        [SUCCESS, ~ , ~ ] = mkdir('results');
+        result = result + not(SUCCESS);
+    end  
+    if not(isfolder('bad_results'))
+        [SUCCESS, ~ , ~ ] = mkdir('bad_results');
+        result = result + not(SUCCESS);
+    end
+end
+
 
 %--------------------------------------------------------------------------
 %{
