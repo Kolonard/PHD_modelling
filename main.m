@@ -165,14 +165,14 @@ while 1
            
     if isnan(end_position(1)) || crdErr(end) >= 10000
         clc;
-        fprintf('Nan found in model\n\n');
-        continue;
-        %timeMark = datetime('now','Format',"yyyy-MM-dd-HH-mm-ss");
-        %fname = strcat('bad_results\',string(timeMark),'.mat') ;
-        %save(fname,varlist{:});
-        %fname = strcat('bad_results\bad_traj',string(timeMark),'.mat') ;
-        %copyfile 'Z:\track_normal.mat' 'bad_results\'
-        %movefile('bad_results\track_normal.mat', fname);
+        fprintf('Nan found in model\n');
+        fprintf('Skip iteration\n\n');
+%         timeMark = datetime('now','Format',"yyyy-MM-dd-HH-mm-ss");
+%         fname = strcat('bad_results\',string(timeMark),'.mat') ;
+%         save(fname,varlist{:});
+%         fname = strcat('bad_results\bad_traj',string(timeMark),'.mat') ;
+%         copyfile 'Z:\track_normal.mat' 'bad_results\'
+%         movefile('bad_results\track_normal.mat', fname);
     else    
         fname = strcat('results\',string(datetime('now','Format',"yyyy-MM-dd-HH-mm-ss")), string(randi(10000)),'.mat') ;
         save(fname,varlist{:});
