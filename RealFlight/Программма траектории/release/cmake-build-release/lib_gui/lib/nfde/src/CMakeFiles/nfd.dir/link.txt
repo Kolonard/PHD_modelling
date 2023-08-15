@@ -1,0 +1,2 @@
+C:\PROGRA~2\MICROS~2\2019\COMMUN~1\VC\Tools\Llvm\x64\bin\llvm-ar.exe qc nfd.lib CMakeFiles/nfd.dir/nfd_win.cpp.obj
+C:\PROGRA~2\MICROS~2\2019\COMMUN~1\VC\Tools\Llvm\x64\bin\LLVM-R~1.EXE nfd.lib

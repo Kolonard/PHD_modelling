@@ -1,0 +1,16 @@
+
+lib/trj/vl.h
+lib/trj/vl_svd.h
+lib/trj/trj_api.h
+lib/trj/trj_utils.h
+lib/trj/trj_ellp.h
+#lib/trj/trj_obj.h
+#lib/trj/trj_eng.h
+#lib/trj/trj_traj.h
+#lib/trj/trj_ctrl.h
+#lib/trj/trj_proc.h
+#lib/trj/trj_bz.h
+
+plugins/ctrl_test.h
+
+plugins/init.h

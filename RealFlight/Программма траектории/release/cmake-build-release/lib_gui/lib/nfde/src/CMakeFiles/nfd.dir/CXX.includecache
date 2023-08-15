@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../lib_gui/lib/nfde/src/include/nfd.h
+stddef.h
+-
+
+C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/nfde/src/nfd_win.cpp
+assert.h
+-
+shobjidl.h
+-
+stdio.h
+-
+wchar.h
+-
+windows.h
+-
+nfd.h
+C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/nfde/src/nfd.h
+

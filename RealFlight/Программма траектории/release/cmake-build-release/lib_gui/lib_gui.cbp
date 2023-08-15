@@ -1,0 +1,923 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="lib_gui"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="clang"/>
+		<Option virtualFolders="CMake Files\;CMake Files\lib_gui\;CMake Files\lib_gui\lib\;CMake Files\lib_gui\lib\clip\;CMake Files\lib_gui\lib\clip\examples\;CMake Files\lib_gui\lib\clip\tests\;CMake Files\lib_gui\lib\nfde\;CMake Files\lib_gui\lib\nfde\src\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\Makefile VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lib_gui">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib_gui.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/./lib/imgui"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/./lib/imgui/backends/glfw/include"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/./lib/imgui/backends/gl3w"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/./lib/implot"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/./lib/clip"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/./lib/nfde/src/include"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/./lib/imgui/backends"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/./lib/imgui/examples/libs/glfw/include"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/./lib/imgui/examples/libs/gl3w"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/nfde/src/include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\Makefile VERBOSE=1 lib_gui"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lib_gui/fast">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib_gui.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/./lib/imgui"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/./lib/imgui/backends/glfw/include"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/./lib/imgui/backends/gl3w"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/./lib/implot"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/./lib/clip"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/./lib/nfde/src/include"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/./lib/imgui/backends"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/./lib/imgui/examples/libs/glfw/include"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/./lib/imgui/examples/libs/gl3w"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/nfde/src/include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\Makefile VERBOSE=1 lib_gui/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="clip">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/clip.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\Makefile VERBOSE=1 clip"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="clip/fast">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/clip.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\Makefile VERBOSE=1 clip/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="int_format">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples/int_format.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 int_format"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="int_format/fast">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples/int_format.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 int_format/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="copy">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples/copy.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 copy"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="copy/fast">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples/copy.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 copy/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="helloworld">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples/helloworld.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 helloworld"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="helloworld/fast">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples/helloworld.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 helloworld/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="put_image">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples/put_image.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 put_image"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="put_image/fast">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples/put_image.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 put_image/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="paste">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples/paste.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 paste"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="paste/fast">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples/paste.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 paste/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="show_image">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples/show_image.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 show_image"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="show_image/fast">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples/show_image.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/examples"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 show_image/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\examples\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="clip_user_format_tests">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/tests/clip_user_format_tests.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/tests"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 clip_user_format_tests"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="clip_user_format_tests/fast">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/tests/clip_user_format_tests.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/tests"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 clip_user_format_tests/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="clip_text_tests">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/tests/clip_text_tests.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/tests"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 clip_text_tests"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="clip_text_tests/fast">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/tests/clip_text_tests.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/tests"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 clip_text_tests/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="clip_image_tests">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/tests/clip_image_tests.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/tests"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 clip_image_tests"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="clip_image_tests/fast">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/tests/clip_image_tests.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/clip/tests"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add option="-D_SCL_SECURE_NO_WARNINGS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/."/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 clip_image_tests/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\clip\tests\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="nfd">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/nfde/src/nfd.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/nfde/src"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/nfde/src/include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\nfde\src\Makefile VERBOSE=1 nfd"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\nfde\src\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\nfde\src\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\nfde\src\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="nfd/fast">
+				<Option output="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/nfde/src/nfd.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/cel/dev/bitbucket/softael/trajectory/cmake-build-release/lib_gui/lib/nfde/src"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
+					<Add option="-DIMGUI_DEFINE_MATH_OPERATORS"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/."/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./src"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/trj"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/picoc"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/./lib/json11"/>
+					<Add directory="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/nfde/src/include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\x64\lib\clang\11.0.0\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\nfde\src\Makefile VERBOSE=1 nfd/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\nfde\src\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\nfde\src\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\cel\dev\bitbucket\softael\trajectory\cmake-build-release\lib_gui\lib\nfde\src\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/clip.cpp">
+			<Option target="clip"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/clip.h">
+			<Option target="clip"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/clip_win.cpp">
+			<Option target="clip"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/examples/copy.cpp">
+			<Option target="copy"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/examples/helloworld.cpp">
+			<Option target="helloworld"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/examples/int_format.cpp">
+			<Option target="int_format"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/examples/paste.cpp">
+			<Option target="paste"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/examples/put_image.cpp">
+			<Option target="put_image"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/examples/show_image.cpp">
+			<Option target="show_image"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/image.cpp">
+			<Option target="clip"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/tests/image_tests.cpp">
+			<Option target="clip_image_tests"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/tests/text_tests.cpp">
+			<Option target="clip_text_tests"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/tests/user_format_tests.cpp">
+			<Option target="clip_user_format_tests"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/imgui/backends/imgui_impl_glfw.cpp">
+			<Option target="lib_gui"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/imgui/backends/imgui_impl_glfw.h">
+			<Option target="lib_gui"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/imgui/backends/imgui_impl_opengl3.cpp">
+			<Option target="lib_gui"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/imgui/backends/imgui_impl_opengl3.h">
+			<Option target="lib_gui"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/imgui/examples/libs/gl3w/GL/gl3w.c">
+			<Option target="lib_gui"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/imgui/examples/libs/gl3w/GL/gl3w.h">
+			<Option target="lib_gui"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/imgui/imgui.cpp">
+			<Option target="lib_gui"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/imgui/imgui.h">
+			<Option target="lib_gui"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/imgui/imgui_demo.cpp">
+			<Option target="lib_gui"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/imgui/imgui_draw.cpp">
+			<Option target="lib_gui"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/imgui/imgui_tables.cpp">
+			<Option target="lib_gui"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/imgui/imgui_widgets.cpp">
+			<Option target="lib_gui"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/implot/implot.cpp">
+			<Option target="lib_gui"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/implot/implot.h">
+			<Option target="lib_gui"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/implot/implot_demo.cpp">
+			<Option target="lib_gui"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/implot/implot_items.cpp">
+			<Option target="lib_gui"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/nfde/src/include/nfd.h">
+			<Option target="nfd"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/nfde/src/include/nfd.hpp">
+			<Option target="nfd"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/nfde/src/nfd_win.cpp">
+			<Option target="nfd"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lib_gui\"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lib_gui\lib\clip\"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/examples/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lib_gui\lib\clip\examples\"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/clip/tests/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lib_gui\lib\clip\tests\"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/nfde/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lib_gui\lib\nfde\"/>
+		</Unit>
+		<Unit filename="C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/nfde/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lib_gui\lib\nfde\src\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

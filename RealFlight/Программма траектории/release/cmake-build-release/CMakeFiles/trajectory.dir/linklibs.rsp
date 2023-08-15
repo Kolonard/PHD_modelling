@@ -1,0 +1,1 @@
+ lib_gui/lib_gui.lib -lopengl32.lib -lgdi32.lib -lshell32.lib -lglu32.lib ../lib_gui/lib/imgui/examples/libs/glfw/lib-vc2010-64/glfw3.lib lib_gui/lib/clip/clip.lib -lshlwapi.lib lib_gui/lib/nfde/src/nfd.lib -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -loldnames 

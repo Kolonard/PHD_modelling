@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../lib_gui/lib/imgui/examples/libs/gl3w/GL/gl3w.h
+GL/glcorearb.h
+-
+
+../lib_gui/lib/imgui/examples/libs/gl3w/GL/glcorearb.h
+windows.h
+-
+stddef.h
+-
+inttypes.h
+-
+inttypes.h
+-
+inttypes.h
+-
+stdint.h
+-
+stdint.h
+-
+inttypes.h
+-
+
+C:/Users/cel/dev/bitbucket/softael/trajectory/lib_gui/lib/imgui/examples/libs/gl3w/GL/gl3w.c
+GL/gl3w.h
+-
+windows.h
+-
+Carbon/Carbon.h
+-
+dlfcn.h
+-
+GL/glx.h
+-
+
