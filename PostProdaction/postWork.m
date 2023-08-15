@@ -62,9 +62,10 @@ fprintf('Sort done\n\n');
 % mergin data LEN
 fprintf('Get ready for merge results\n\n');
 ii = 1;
+poligon(:,4) = ones();
 while ii < (length(poligon(:,1))-1)  
     jj = ii + 1;
-    poligon(:,4) = zeros();
+    
     while poligon(ii,1) == poligon(jj,1)
         if ( ( poligon( ii,1 ) == poligon( jj,1 ) ) && ...
              ( poligon( ii,2 ) == poligon( jj,2 ) ) ) % if K and LEN match
@@ -73,7 +74,6 @@ while ii < (length(poligon(:,1))-1)
             poligon(jj, :) = [];
             
         end
-        
         jj = jj + 1; 
         if jj > length(poligon(:,1))
             break;
@@ -94,9 +94,10 @@ makeSurf(5000, poligon);
 %%
 makeShortSurf(4.5,8.5, 0, 40, poligon)
 %%
-cftool;
+%cftool;
+%% make poligon of iterations
+makeSurf(5000, [poligon(:,1),poligon(:,2),poligon(:,4)]);
 %%
-
 function poligon = parceResults(listOfRes, folderName)
      poligon = zeros(length(listOfRes) - 2, 3);
      for jj = 3:length(listOfRes)
@@ -143,7 +144,7 @@ function makeShortSurf(Xmin,Xmax, Ymin,Ymax, poligon)
     for ii = 1:length(poligon(:,1))
         if poligon(ii,1) >= Xmin && poligon(ii,1) <= Xmax &&...
            poligon(ii,2) >= Ymin && poligon(ii,2) <= Ymax 
-            shortPoligon(end + 1,:) = poligon(ii,:);
+            shortPoligon(end + 1,1:3) = poligon(ii,1:3);
         end
     end
     shortPoligon(1,:) = [];
