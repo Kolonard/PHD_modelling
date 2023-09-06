@@ -3,13 +3,13 @@ close all
 clc
 
 try 
-    load('poligon_1.mat');
+    load('poligon.mat');
 catch
     poligon = zeros(1,3);
     poligon = parceFlodersResults();
 end
 %%
-makeSurf(500, poligon);
+makeSurf(2000, poligon);
 %%
 % makeShortSurf(4.5,8.5, 0, 40, poligon)
 %%
