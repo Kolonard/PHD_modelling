@@ -56,11 +56,13 @@ global beta beta1 q ge a e2
     rll = deg2rad(get_rndValue(0,1,0));
     %
     velocity = get_rndValue(0,1,velocityMax);
-    Vh(pnt) = velocity * sin(deg2rad (pth(pnt)));
+    %Vh(pnt) = velocity * sin(deg2rad (pth(pnt)));
+    Vh(pnt) = velocity * sin( (pth(pnt)) );
     Vhor = sqrt(velocity^2 - Vh(pnt).^2); 
-    Vn(pnt) = Vhor * cos(deg2rad (hdg(pnt)));
-    Ve(pnt) = Vhor * sin(deg2rad (hdg(pnt)));
-    
+%     Vn(pnt) = Vhor * cos(deg2rad (hdg(pnt)));
+%     Ve(pnt) = Vhor * sin(deg2rad (hdg(pnt)));
+    Vn(pnt) = Vhor * cos( hdg(pnt) );
+    Ve(pnt) = Vhor * sin( hdg(pnt) );
     
     
 %--------------------------------------------------------------------------
@@ -68,17 +70,23 @@ global beta beta1 q ge a e2
     timeStamp(pnt) = timeInitial;
     %todo: add new profiles for angle change
 %     dhdg = 0; dpth = 0; drll = 0;
-    
+%%    
     while (timeStamp(pnt) <= timeDuration + timeInitial)
     %recalck new angle
         hdg(pnt + 1) = hdg(pnt) + dhdg*timeStep; 
         pth(pnt + 1) = pth(pnt) + dpth*timeStep; 
         rll(pnt + 1) = rll(pnt) + drll*timeStep;
     %take new velocity proections
-        Vh(pnt + 1) = velocity * sin(deg2rad (pth(pnt + 1)));
+        Vh(pnt + 1) = velocity * sin( (pth(pnt + 1)));
         Vhor = sqrt(velocity^2 - Vh(pnt + 1).^2); 
-        Vn(pnt + 1) = Vhor * cos(deg2rad (hdg(pnt + 1)));
-        Ve(pnt + 1) = Vhor * sin(deg2rad (hdg(pnt + 1)));
+        Vn(pnt + 1) = Vhor * cos( (hdg(pnt + 1)));
+        Ve(pnt + 1) = Vhor * sin( (hdg(pnt + 1)));
+        
+%         Vh(pnt + 1) = velocity * sin(deg2rad (pth(pnt + 1)));
+%         Vhor = sqrt(velocity^2 - Vh(pnt + 1).^2); 
+%         Vn(pnt + 1) = Vhor * cos(deg2rad (hdg(pnt + 1)));
+%         Ve(pnt + 1) = Vhor * sin(deg2rad (hdg(pnt + 1)));
+        
         
 %         Vn(pnt + 1) = velocity * cos(deg2rad (hdg(pnt + 1)));
 %         Ve(pnt + 1) = velocity * sin(deg2rad (hdg(pnt + 1)));
@@ -126,9 +134,14 @@ global beta beta1 q ge a e2
         
         diff_matDirCos = (future_matDirCos - current_matDirCos) / timeStep;
         Omega_gyro = zeros(3,3);
+        
         Omega_GCS = [  0            ,  (Omega_H + Uh),  (Omega_N + Un);
                       (Omega_H + Uh),  0             , -(Omega_E)     ;
                      -(Omega_N + Un),  (Omega_E)     ,  0            ];
+%         
+%         Omega_GCS = [  0            , -(Omega_H + Uh),  (Omega_N + Un);
+%                       (Omega_H + Uh),  0             , -(Omega_E)     ;
+%                      -(Omega_N + Un),  (Omega_E)     ,  0            ];
         Omega_gyro = future_matDirCos \ (diff_matDirCos + Omega_GCS*future_matDirCos);      
         grs(:, pnt) = [Omega_gyro(3,2),Omega_gyro(1,3),Omega_gyro(2,1)];
     %new time stamp    
